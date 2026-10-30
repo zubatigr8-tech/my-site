@@ -1,0 +1,28 @@
+# Eski nusxa (tahrirlanmaydi)
+my site/
+
+# Claude Code mahalliy sozlamalari va ishga tushirish fayllari
+.claude/
+CLAUDE.md
+
+# Operatsion tizim fayllari
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Muharrirlar
+.vscode/
+.idea/
+*.swp
+
+# Vaqtinchalik va log fayllar
+*.log
+*.tmp
+tmp/
+temp/
+
+# Maxfiy ma'lumotlar
+.env
+.env.*
+*.key
+*.pem

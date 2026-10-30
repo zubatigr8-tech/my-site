@@ -1,0 +1,495 @@
+:root {
+  --bg: #f5efe6;
+  --card: #fffcf7;
+  --text: #2b2420;
+  --body: #4a3f38;
+  --muted: #7a6e64;
+  --line: #e9dfd2;
+  --accent: #8a5a3b;
+  --on-accent: #ffffff;
+  --band: #8a5a3b;
+  --media-bg: #efe6da;
+  --media-border: #d6c8b6;
+  --header-bg: rgba(253, 247, 240, 0.94);
+  --shadow: rgba(90, 60, 40, 0.08);
+  --cta: #7b3613;
+  color-scheme: light;
+}
+
+/* Tungi rejim ranglari */
+:root[data-theme="dark"] {
+  --bg: #1a1613;
+  --card: #221d19;
+  --text: #f2ebe3;
+  --body: #d5cabf;
+  --muted: #a39587;
+  --line: #3a322b;
+  --accent: #c98b5e;
+  --on-accent: #1a1613;
+  --band: #3b2b20;
+  --media-bg: #2a241f;
+  --media-border: #4a4038;
+  --header-bg: rgba(26, 22, 19, 0.85);
+  --shadow: rgba(0, 0, 0, 0.4);
+  --cta: #a8501f;
+  color-scheme: dark;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Work Sans", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Umumiy ---------- */
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.section-head { margin-bottom: 48px; }
+
+.section-head h2,
+.contact h2 {
+  margin-top: 8px;
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 26px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.btn:hover { opacity: 0.85; }
+
+.btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn-outline { border: 1px solid var(--accent); color: var(--accent); }
+.btn-light   { background: #fff; color: var(--band); }
+.btn-ghost   { border: 1px solid rgba(255, 255, 255, 0.6); color: #fff; }
+
+/* Rasm konteyneri: rasm yo'q bo'lsa, fayl nomini ko'rsatadi */
+.media {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--media-bg);
+}
+
+.media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media.is-empty { border: 1px dashed var(--media-border); }
+.media.is-empty img { display: none; }
+.media.is-empty::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- Menyu ---------- */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--header-bg);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--cta);
+  text-decoration: none;
+  letter-spacing: -0.3px;
+}
+
+[data-theme="dark"] .logo { color: var(--accent); }
+
+.logo-star { color: #d9822b; font-size: 16px; }
+
+.logo-badge {
+  padding: 1px 10px;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.nav { display: flex; align-items: center; gap: 28px; }
+
+.nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav a:hover { color: var(--accent); }
+
+/* Menyudagi "Aloqa" tugmasi */
+.nav .nav-cta {
+  padding: 9px 20px;
+  border-radius: 999px;
+  background: var(--cta);
+  color: #fff;
+}
+
+.nav .nav-cta:hover { color: #fff; opacity: 0.88; }
+
+/* Tema almashtirish tugmasi */
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.theme-toggle svg { width: 18px; height: 18px; }
+
+.icon-sun { display: none; }
+[data-theme="dark"] .icon-sun { display: block; }
+[data-theme="dark"] .icon-moon { display: none; }
+
+/* ---------- Hero ---------- */
+
+/* Hero har ikkala rejimda ham to'q jigarrang */
+.hero {
+  padding: 72px 0 80px;
+  background:
+    radial-gradient(ellipse at 0% 0%, #4a2414 0%, transparent 55%),
+    #2a1510;
+  color: #f6ece4;
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #e6d6c9;
+}
+
+.hero-badge svg { width: 18px; height: 18px; color: #f0a030; }
+
+.hero h1 {
+  margin: 22px 0 22px;
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.5px;
+}
+
+.lead {
+  max-width: 560px;
+  font-size: 18px;
+  color: #e0cfc2;
+}
+
+/* "Bog'lanish" tugmasi: o'q belgili pill */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 36px;
+  padding: 10px 10px 10px 26px;
+  border-radius: 999px;
+  background: #8a3d17;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.btn-pill:hover { background: #9c4719; }
+
+.btn-pill-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fff;
+  color: #2a1510;
+  transition: transform 0.2s;
+}
+
+.btn-pill:hover .btn-pill-icon { transform: translateX(3px); }
+.btn-pill-icon svg { width: 18px; height: 18px; }
+
+.featured { margin-top: 48px; }
+.featured p { font-size: 16px; color: #e6d6c9; }
+
+.featured ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  margin-top: 14px;
+  list-style: none;
+}
+
+.featured li {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  color: rgba(246, 236, 228, 0.35);
+}
+
+.hero-photo {
+  aspect-ratio: 4 / 5;
+  border-radius: 28px;
+}
+
+/* ---------- Xizmatlar ---------- */
+
+.services {
+  padding: 96px 0 48px;
+  background: var(--card);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.service { padding: 48px 0; }
+.service + .service { border-top: 1px solid var(--line); }
+
+.service .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Har ikkinchi xizmatda rasm o'ng tomonda */
+.service:nth-of-type(even) .media { order: 2; }
+
+.service .media { aspect-ratio: 4 / 3; }
+
+.service-num {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 1.5px;
+}
+
+.service h3 {
+  margin: 8px 0 14px;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
+}
+
+.service-text > p:not(.service-num) { color: var(--body); }
+
+.points { margin-top: 18px; list-style: none; }
+
+.points li {
+  position: relative;
+  margin-top: 8px;
+  padding-left: 20px;
+  color: var(--body);
+}
+
+.points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+  list-style: none;
+}
+
+.platforms li {
+  padding: 6px 14px;
+  font-size: 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+}
+
+/* ---------- Loyihalarim ---------- */
+
+.projects { padding: 96px 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px var(--shadow);
+}
+
+.project-card .media {
+  aspect-ratio: 16 / 10;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.project-body { padding: 22px 24px 26px; }
+
+.project-tag {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+.project-card h3 {
+  margin: 6px 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.project-card p:last-child { font-size: 14px; color: var(--muted); }
+
+/* ---------- Aloqa ---------- */
+
+.contact {
+  padding: 96px 0;
+  background: var(--band);
+  color: #fff;
+  text-align: center;
+}
+
+.contact .eyebrow { color: rgba(255, 255, 255, 0.75); }
+
+.contact-text {
+  max-width: 480px;
+  margin: 14px auto 0;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.contact .actions { justify-content: center; }
+
+.phone {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+}
+
+.phone:hover { color: #fff; }
+
+/* ---------- Footer ---------- */
+
+.footer {
+  padding: 28px 0;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- Moslashuvchanlik ---------- */
+
+@media (max-width: 860px) {
+  .hero { padding: 48px 0 64px; }
+  .hero .container { grid-template-columns: 1fr; gap: 48px; }
+  .service .container { grid-template-columns: 1fr; gap: 28px; }
+  .hero-photo { max-width: 420px; }
+  .service:nth-of-type(even) .media { order: 0; }
+  .services, .projects, .contact { padding-top: 64px; padding-bottom: 64px; }
+  .service { padding: 36px 0; }
+}
+
+@media (max-width: 600px) {
+  .container { padding: 0 16px; }
+  .nav { gap: 16px; }
+  .nav a:not(:last-of-type) { display: none; }
+  .actions .btn { flex: 1; }
+  .logo-star, .logo-badge { display: none; }
+  .featured ul { gap: 8px 22px; }
+  .featured li { font-size: 17px; }
+}
