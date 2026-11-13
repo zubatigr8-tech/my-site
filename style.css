@@ -315,8 +315,9 @@ body {
   color: rgba(246, 236, 228, 0.35);
 }
 
+/* Rasm butunligicha ko'rinadi (qirqilmaydi): nisbat rasmning o'zidek */
 .hero-photo {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 520 / 288;
   border-radius: 28px;
 }
 
@@ -594,7 +595,6 @@ body {
   .hero { padding: 48px 0 64px; }
   .hero .container { grid-template-columns: 1fr; gap: 48px; }
   .service .container { grid-template-columns: 1fr; gap: 28px; }
-  .hero-photo { max-width: 420px; }
   .service:nth-of-type(even) .media { order: 0; }
   .services, .projects, .works, .reviews, .faq, .contact { padding-top: 64px; padding-bottom: 64px; }
   .service { padding: 36px 0; }
@@ -621,8 +621,7 @@ body {
     padding-right: 40px;
   }
 
-  /* Telefonda asosiy rasm ekranni to'ldirib yubormasin */
-  .hero-photo { aspect-ratio: 1 / 1; border-radius: 20px; }
+  .hero-photo { border-radius: 20px; }
 }
 
 /* Juda tor telefonlar (320–380px): ism, "Aloqa" va tema tugmasi bitta qatorga sig'sin */
